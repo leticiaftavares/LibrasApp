@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		CE170E2F2F9FA12D00D87D2A /* Nuvem in Frameworks */ = {isa = PBXBuildFile; productRef = CE170E2E2F9FA12D00D87D2A /* Nuvem */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		CE170DFE2F9BAA9A00D87D2A /* LibrasApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LibrasApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE170E2F2F9FA12D00D87D2A /* Nuvem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = LibrasApp;
 			packageProductDependencies = (
+				CE170E2E2F9FA12D00D87D2A /* Nuvem */,
 			);
 			productName = LibrasApp;
 			productReference = CE170DFE2F9BAA9A00D87D2A /* LibrasApp.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = CE170DF52F9BAA9A00D87D2A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				CE170E2D2F9FA12D00D87D2A /* XCRemoteSwiftPackageReference "nuvem" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CE170DFF2F9BAA9A00D87D2A /* Products */;
 			projectDirPath = "";
@@ -349,6 +358,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CE170E2D2F9FA12D00D87D2A /* XCRemoteSwiftPackageReference "nuvem" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mateusrodriguesxyz/nuvem.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CE170E2E2F9FA12D00D87D2A /* Nuvem */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE170E2D2F9FA12D00D87D2A /* XCRemoteSwiftPackageReference "nuvem" */;
+			productName = Nuvem;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CE170DF62F9BAA9A00D87D2A /* Project object */;
 }

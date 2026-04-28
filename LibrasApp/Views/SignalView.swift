@@ -11,7 +11,7 @@ import SwiftUI
 
 struct SignalView: View {
     var body: some View {
-        Text("sinais")
+        Text("sinal")
     }
 }
 

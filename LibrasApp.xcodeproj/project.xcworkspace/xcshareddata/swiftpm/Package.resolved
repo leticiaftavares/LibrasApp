@@ -1,0 +1,24 @@
+{
+  "originHash" : "80816276b25809d7a2b0437cdbc77b73b8775ca68c4fe704e33ef72cdf0ffb76",
+  "pins" : [
+    {
+      "identity" : "nuvem",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mateusrodriguesxyz/nuvem.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "4812c4a96c9ad9ccd72ac426aaeae31fe69b24f2"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-syntax.git",
+      "state" : {
+        "revision" : "4799286537280063c85a32f09884cfbca301b1a1",
+        "version" : "602.0.0"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -10,11 +10,28 @@ import SwiftData
 import SwiftUI
 
 struct NewSignalView: View {
+    @Binding var isPresented: Bool
     var body: some View {
-        Text("novos sinais")
+        NavigationStack {
+            Text("New Signal View")
+                .navigationTitle(Text("New Signal"))
+                .toolbar{
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Dismiss", systemImage: "xmark"){
+                            isPresented = false
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Send", systemImage: "checkmark"){
+
+                        }
+                    }
+                }
+        }
     }
 }
 
 #Preview {
-    NewSignalView()
+    @Previewable @State var isPresented: Bool = true
+    NewSignalView(isPresented: $isPresented)
 }

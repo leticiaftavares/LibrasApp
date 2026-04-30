@@ -8,21 +8,23 @@
 import SwiftUI
 
 struct CategoryButton: View {
+    var category: String
+    var image: String
     var body: some View {
 
             VStack(alignment: .leading){
                 HStack{
                     Spacer()
-                    Image("symbolSettings")
+                    Image(image)
                         .resizable()
-                        .frame(width: 42, height: 42)
+                        .frame(width: 40, height: 40)
                         .padding(.horizontal,5)
                 }
                 
                 Text("Sinais")
                     .font(Font.system(size: 16))
-                Text("Categoria")
-                    .font(Font.system(size: 20))
+                Text(category)
+                    .font(Font.system(size: 20).bold())
             }
             .foregroundStyle(Color(.bluetitles))
             .contentShape(Rectangle())
@@ -36,5 +38,8 @@ struct CategoryButton: View {
 }
 
 #Preview {
-    CategoryButton()
+    @Previewable @State var category: String = "Sinais"
+    @Previewable @State var image: String = "Image"
+
+    CategoryButton(category: category, image: image)
 }

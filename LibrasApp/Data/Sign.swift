@@ -17,12 +17,14 @@ struct Sign {
     var video: Data?
     @CKField("category")
     var category: String
-    @CKAssetField("handSettings")
-    var handSettings: UIImage?
+    @CKAssetListField("handSettings")
+    var handSettings: [UIImage]
     @CKField("meaning")
     var meaning: String
     @CKField("tag")
-    var tag: String
+    var tag: [String]
+    @CKField("fullName")
+    var fullName: String?
 
 
 }
@@ -32,25 +34,21 @@ import SwiftUI
 
 struct AllSignsView: View {
     
-    @State var signs: [Sign] = []
+    @State var signs: [Sign.Observable] = []
+//    @State var category: String = ""
     
     var body: some View {
-        List {
-            ForEach(signs) { sign in
-                VStack {
-                    Text(sign.name)
-//                    Text(sign.meaning)
-                    if let video = sign.video {
-                        Text(video.description)
-                        Text(sign.category)
-                        Text(sign.meaning)
-                    }
-                }
+        List{
+            ForEach(signs){ sign in
+//                SignalView(sign: sign)
             }
         }
-        .task {
+        .task{
             do {
-                signs = try await Sign.query(on: .default).all()
+                self.signs = try await Sign.query(on: .default)
+                    .field(exclude: \.$video)
+                    .all()
+                    .map(\.observable)
             } catch {
                 print(error)
             }

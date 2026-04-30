@@ -8,35 +8,66 @@
 import Foundation
 import SwiftData
 import SwiftUI
+import Nuvem
 
 struct ListSignalView: View {
-    @State private var showingAddSignalSheet: Bool = false
+    var categoryView: String
+    @State var signs: [Sign.Observable] = []
+    @State var favorites: [Sign.Observable] = []
+    @State var isFavorite: Bool = true
 
+    @State private var showingAddSignalSheet: Bool = false
+    
     var body: some View {
         NavigationStack{
-            VStack {
-            
-                NavigationLink(destination: SignalView()) {
-                    SignalButton()
-                }
-                .padding(.top, 15)
-                Spacer()
+           VStack{
+               ScrollView(.vertical) {
+                   VStack{
+                       ForEach(signs){ sign in
+                           let category = sign.category
+                           if(categoryView == category){
+                               VStack {
+                                   NavigationLink(destination: SignalView(sign: sign)) {
+                                       SignalButton(sign: sign)
+                                   }
+                                   .padding(.top, 15)
+                                   Spacer()
+                               }
+                           }
+                       }
+                   }
+                   
+                   .navigationTitle(Text(categoryView))
+                   .toolbar{
+                       ToolbarItem(placement: .navigationBarTrailing) {
+                           Button("Add", systemImage: "plus") {
+                               showingAddSignalSheet.toggle()
+                           }
+                       }
+                   }
+                   .sheet(isPresented: $showingAddSignalSheet){
+                       NewSignalView(isPresented: $showingAddSignalSheet)
+                   }
+                   .frame(maxWidth: .infinity, maxHeight: .infinity)
+                   .task{
+                       do {
+                           self.signs = try await Sign.query(on: .default)
+                               .field(exclude: \.$video)
+                               .all()
+                               .map(\.observable)
+                       } catch {
+                           print(error)
+                       }
+                       
+                   }
+               }
             }
-            .navigationTitle(Text("Categoria"))
-            .toolbar{
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Add", systemImage: "plus") {
-                        showingAddSignalSheet.toggle()
-                    }
-                }
-            }
-            .sheet(isPresented: $showingAddSignalSheet){
-                NewSignalView(isPresented: $showingAddSignalSheet)
-            }
+           .background(Color.blueBackground)
         }
     }
 }
 
 #Preview {
-    ListSignalView()
+    @Previewable @State var categoryView = "Metodologia"
+    ListSignalView(categoryView: categoryView)
 }

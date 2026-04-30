@@ -13,7 +13,7 @@ struct ContentView: View {
     @Query private var palavras: [Palavra]
 
     var body: some View {
-        CategoriesView()
+        TabView_()
     }
 }
 

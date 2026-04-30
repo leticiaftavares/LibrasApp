@@ -12,6 +12,8 @@ import SwiftUI
 struct HistoryView: View {
     var body: some View {
         Text("historico sinais")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.blueBackground)
     }
 }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE170E2F2F9FA12D00D87D2A /* Nuvem in Frameworks */ = {isa = PBXBuildFile; productRef = CE170E2E2F9FA12D00D87D2A /* Nuvem */; };
+		CEC2010C2FA3CA7000BD821C /* SwiftUIExtras in Frameworks */ = {isa = PBXBuildFile; productRef = CEC2010B2FA3CA7000BD821C /* SwiftUIExtras */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE170E2F2F9FA12D00D87D2A /* Nuvem in Frameworks */,
+				CEC2010C2FA3CA7000BD821C /* SwiftUIExtras in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +86,7 @@
 			name = LibrasApp;
 			packageProductDependencies = (
 				CE170E2E2F9FA12D00D87D2A /* Nuvem */,
+				CEC2010B2FA3CA7000BD821C /* SwiftUIExtras */,
 			);
 			productName = LibrasApp;
 			productReference = CE170DFE2F9BAA9A00D87D2A /* LibrasApp.app */;
@@ -115,6 +118,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CE170E2D2F9FA12D00D87D2A /* XCRemoteSwiftPackageReference "nuvem" */,
+				CEC2010A2FA3CA7000BD821C /* XCRemoteSwiftPackageReference "SwiftUIExtras" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CE170DFF2F9BAA9A00D87D2A /* Products */;
@@ -155,6 +159,7 @@
 				CODE_SIGN_ENTITLEMENTS = LibrasApp/LibrasApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "LibrasApp/Preview\\ Assets.xcassets";
 				DEVELOPMENT_TEAM = T98HPS4Q2B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -189,6 +194,7 @@
 				CODE_SIGN_ENTITLEMENTS = LibrasApp/LibrasApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "LibrasApp/Preview\\ Assets.xcassets";
 				DEVELOPMENT_TEAM = T98HPS4Q2B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -368,6 +374,14 @@
 				kind = branch;
 			};
 		};
+		CEC2010A2FA3CA7000BD821C /* XCRemoteSwiftPackageReference "SwiftUIExtras" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mateusrodriguesxyz/SwiftUIExtras.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -375,6 +389,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE170E2D2F9FA12D00D87D2A /* XCRemoteSwiftPackageReference "nuvem" */;
 			productName = Nuvem;
+		};
+		CEC2010B2FA3CA7000BD821C /* SwiftUIExtras */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CEC2010A2FA3CA7000BD821C /* XCRemoteSwiftPackageReference "SwiftUIExtras" */;
+			productName = SwiftUIExtras;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

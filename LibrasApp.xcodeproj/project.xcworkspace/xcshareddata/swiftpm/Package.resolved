@@ -1,5 +1,5 @@
 {
-  "originHash" : "80816276b25809d7a2b0437cdbc77b73b8775ca68c4fe704e33ef72cdf0ffb76",
+  "originHash" : "16771caad48df14fc54a9d504582533360e63d6d079289b0d2246a09ba52bbdf",
   "pins" : [
     {
       "identity" : "nuvem",
@@ -7,7 +7,7 @@
       "location" : "https://github.com/mateusrodriguesxyz/nuvem.git",
       "state" : {
         "branch" : "main",
-        "revision" : "4812c4a96c9ad9ccd72ac426aaeae31fe69b24f2"
+        "revision" : "6d8cace5724fe2c6375fbaa1ba3867cdae172bc9"
       }
     },
     {
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "4799286537280063c85a32f09884cfbca301b1a1",
         "version" : "602.0.0"
+      }
+    },
+    {
+      "identity" : "swiftuiextras",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mateusrodriguesxyz/SwiftUIExtras.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "d5967f4f333f30963f40e9ac8c65b19f74ecad21"
       }
     }
   ],

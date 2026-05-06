@@ -9,37 +9,48 @@ import SwiftUI
 import AVKit
 import PhotosUI
 import SwiftUIExtras
+import CloudKit
+import Nuvem
 
 struct FormView: View {
     @State var signName: String = ""
     @State var signMeaning: String = ""
+    @State var fullName: String = ""
     @Binding var isPresented: Bool
+    
+    @State var videoData: Data? = nil
     
     @State var selectedCategory = ""
     
     @State var selectionMulti: Set<String> = [""]
     
-    let categories = ["metodologia", "ferramentas", "código", "negócios"]
-    let tags = ["metodologia", "ferramentas", "código", "negócios"]
-
+    let categories = ["Metodologia", "Ferramenta", "Código", "Negócio"]
+    let tags = ["Linguagem", "Framework", "Desenvolvimento", "Conteúdo", "Planejamneto", "Documentação", "Pessoas"]
+  
     
     var body: some View {
         
         NavigationStack {
             Form{
-                Section("Nome do Sinal"){
-                    TextField("Digite o nome", text: $signName)
+                Section("Nome do Sinal em Inglês *"){
+                    TextField("Digite o nome em Inglês", text: $signName)
                     
                 }
-                Section("Significado da Nome"){
+                Section("Nome do Sinal em Portguês *"){
+                    TextField("Digite o nome em Português", text: $fullName)
+                    
+                }
+                Section("Significado da Nome *"){
                     TextField("Digite o significado", text: $signMeaning, axis: .vertical)
                         .frame(height: 100, alignment: .topLeading)
                 }
-                Section("upload video"){
-                    PhotoPickerDemo()
-                        .frame(height: 100)
+                Section("Upload video *"){
+                    PhotoPickerDemo { data in
+                        videoData = data
+                    }
+                        .frame(height: 100, alignment: .center)
                 }
-                Section("Categoria"){
+                Section("Categoria *"){
                     LazyVGrid(columns: Array(repeating: GridItem(), count: 2)) {
                         ForEach(categories, id: \.self) { category in
                             Button {
@@ -58,7 +69,7 @@ struct FormView: View {
                     }
 
                 }
-                Section("Tags"){
+                Section("Tags *"){
                     
                     LazyVGrid(columns: Array(repeating: GridItem(), count: 2)) {
                         Group(selection: $selectionMulti) {
@@ -66,7 +77,7 @@ struct FormView: View {
                                 Text(tag)
                                     .font(Font.system(size: 20))
                                     .padding(10)
-                                    .frame(width: 140,height: 40)
+                                    .frame(width: 170,height: 40)
                                     .background(selectionMulti.contains(tag) ? .blue : .white)
                                     .cornerRadius(20)
                                     .foregroundStyle(selectionMulti.contains(tag) ? .white : .blue)
@@ -79,13 +90,36 @@ struct FormView: View {
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Send", systemImage: "checkmark"){
-                        isPresented = false
+                        Task {
+                            await save()
+                            isPresented = false
+                        }
                     }
-                    .disabled(signName.isEmpty || signMeaning.isEmpty || selectedCategory == "" || selectionMulti == [""])
+                    .disabled(signName.isEmpty || signMeaning.isEmpty || selectedCategory == "" || selectionMulti == [""] || fullName.isEmpty || videoData == nil)
                 }
             }
         }
     }
+    
+    func save() async {
+        do {
+            var sign = Sign(
+                name: signName,
+                video: videoData,
+                category: selectedCategory,
+                handSettings: [UIImage()],
+                meaning: signMeaning,
+                tag: tags,
+                fullName: fullName,
+                approved:  "false",
+                isFavorite: false
+            )
+            try await sign.save(on: .default)
+        } catch {
+            print(error)
+        }
+    }
+    
 }
 
 #Preview {

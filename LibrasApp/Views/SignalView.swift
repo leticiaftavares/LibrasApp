@@ -14,7 +14,12 @@ import CloudKit
 
 struct SignalView: View {
     
+    @AppStorage("favorites") var favorites = FavoriteSigns()
     @Bindable var sign: Sign.Observable
+    
+    var isFavorite: Bool {
+        favorites.contains(sign.id)
+    }
     
     @State var player: AVPlayer?
     
@@ -27,28 +32,35 @@ struct SignalView: View {
                         .font(Font.system(size: 18))
                         .frame(maxWidth: .infinity, alignment: .init(horizontal: .leading, vertical: .top))
                         .padding(.horizontal, 18)
-                VStack {
-                    VideoPlayer(player: player)
-                        .frame(width: 160, height: 240)
-                        .cornerRadius(10)
-                        .padding()
-                    MeaningButton(sign: sign)
-                        .padding(20)
-                    HandSettingsButton(sign: sign)
+                    VStack {
+                        VideoPlayer(player: player)
+                            .frame(width: 200, height: 240, alignment: .center)
+                            .cornerRadius(10)
+                            .padding()
+                            .background(Color.clear)
+                        MeaningButton(sign: sign)
+                            .padding(20)
+                        HandSettingsButton(sign: sign)
+                    }
+                    .padding(.horizontal)
+                    .navigationTitle(Text(sign.name))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .padding(.bottom, 100)
-                .navigationTitle(Text(sign.name))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
-
+                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.blueBackground)
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Favoritar", systemImage: isFavorite == true ? "heart.fill" :"heart") {
+                        favorite()
+                    }
+                }
+            }
         }
         .task {
             
             let cacheURL = URL.cachesDirectory.appendingPathComponent("\(sign.name.lowercased()).mov")
-            // "LibrasApp/cache/act.mov"
             
             if FileManager.default.fileExists(atPath: cacheURL.path(percentEncoded: false)) {
                 print("loading from cache...")
@@ -73,6 +85,15 @@ struct SignalView: View {
             }
         }
     }
+    
+    func favorite() {
+        if favorites.contains(sign.id) {
+            favorites.remove(sign.id)
+        } else {
+            favorites.insert(sign.id)
+        }
+        
+    }
 }
 
 struct SignalView_Preview: View {
@@ -85,7 +106,9 @@ struct SignalView_Preview: View {
                 handSettings:[UIImage()],
                 meaning: "meaning",
                 tag: ["tag"],
-                fullName: "FullName"
+                fullName: "FullName",
+                approved:  "true",
+                isFavorite: false
             ).observable
         )
     }

@@ -7,12 +7,19 @@
 
 import SwiftUI
 import Nuvem
+import CloudKit
 
 struct SignalButton: View {
-    @State var toggled = false
+    
+    @AppStorage("favorites") var favorites = FavoriteSigns()
+
     @Bindable var sign: Sign.Observable
-    @State var favorites: [Sign.Observable] = []
-    @State var isFavorite: Bool = true
+    
+    
+    var isFavorite: Bool {
+        favorites.contains(sign.id)
+    }
+    
     var body: some View {
         
         HStack{
@@ -29,12 +36,9 @@ struct SignalButton: View {
 
             Spacer()
                 Button(action: {
-                    toggled.toggle()
-                    isFavorite.toggle()
-//                    if isFavorite == true{
-//                        FavoriteSign(isFavorite: isFavorite, sign: sign, favorites: &favorites)
-//                    }
-                }){Image(systemName: toggled == true ? "heart.fill" :"heart")
+                    favorite()
+  
+                }){Image(systemName: isFavorite == true ? "heart.fill" :"heart")
                         .padding()
                         .font(Font.system(size: 20))
                         .background(Color(.white))
@@ -44,19 +48,28 @@ struct SignalButton: View {
                 }
         }
         .contentShape(Rectangle())
-        .frame(width:340, height: .infinity, alignment: .leading)
+        .frame(maxWidth:340, maxHeight: .infinity, alignment: .leading)
         .padding()
         .background(Color(.white))
         .cornerRadius(16)
         .shadow(radius: 1)
     }
+    
+    func favorite() {
+        if favorites.contains(sign.id) {
+            favorites.remove(sign.id)
+        } else {
+            favorites.insert(sign.id)
+        }
+//        var sign = sign.model
+//        sign.isFavorite = true
+//        do {
+//            try await sign.save(on: .default)
+//        } catch {
+//            print(error)
+//        }
+    }
 }
-
-//func FavoriteSign(isFavorite: Bool, sign: Sign.Observable, favorites: inout [Sign]){
-//    if(isFavorite == true){
-//        favorites.append(sign)
-//    }
-//}
 
 struct SignalButton_Preview: View {
     var body: some View {
@@ -68,7 +81,9 @@ struct SignalButton_Preview: View {
                 handSettings: [UIImage()],
                 meaning: "meaning",
                 tag: ["tag"],
-                fullName: "fullName"
+                fullName: "fullName",
+                approved:  "true",
+                isFavorite: false
             ).observable
         )
     }

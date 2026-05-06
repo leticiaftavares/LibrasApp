@@ -17,7 +17,7 @@ struct HandSettingsButton: View {
                 Text("Configuração de Mão")
                     .font(Font.system(size: 22).bold())
                     .foregroundStyle(Color(.bluetitles))
-                    .frame(maxWidth: 300, alignment: .init(horizontal: .leading, vertical: .top))
+                    .frame(maxWidth: 330, alignment: .init(horizontal: .leading, vertical: .top))
 
                 Spacer()
                 ExpandedButton(isExpanded: $isExpanded)
@@ -28,13 +28,12 @@ struct HandSettingsButton: View {
                     ForEach(sign.handSettings, id: \.self) { image in
                         Image(uiImage: image)
                             .resizable()
-//                            .frame(width: 50, height: 50)
                             .font(Font.system(size: 18))
                             .foregroundStyle(Color(.bluetitles))
                             .aspectRatio(1, contentMode: .fill)
+                            
                     }
                 }
-//                .fixedSize()
                 .padding(30)
                 .frame(maxWidth: .infinity)
                 .background(Color(.white))
@@ -59,7 +58,9 @@ struct HandSettingsButton_Preview: View {
         ],
         meaning: "meaning",
         tag: ["tag"],
-        fullName: "fullName"
+        fullName: "fullName",
+        approved:  "true",
+        isFavorite: false
     )
     
     var body: some View {

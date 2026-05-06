@@ -11,13 +11,16 @@ import Nuvem
 struct TagButton: View {
     @Bindable var sign: Sign.Observable
     var body: some View {
-        Label("\(sign.tag)", systemImage: "tag.fill")
-            .padding()
-            .frame(height: 32)
-//            .frame(maxWidth: 160)
-            .background(Color(.bluetag))
-            .cornerRadius(30)
-            .foregroundStyle(Color(.blueprincipal))
+        ForEach(sign.tag, id: \.self){ singletag in
+            Label(singletag, systemImage: "tag.fill")
+                .padding()
+                .frame(height: 32)
+    //            .frame(maxWidth: 160)
+                .background(Color(.bluetag))
+                .cornerRadius(30)
+                .foregroundStyle(Color(.blueprincipal))
+        }
+
     }
 }
 
@@ -31,7 +34,9 @@ struct TagButton_Preview: View {
                 handSettings: [UIImage()],
                 meaning: "meaning",
                 tag: ["tag"],
-                fullName: "fullName"
+                fullName: "fullName",
+                approved:  "true",
+                isFavorite: false
             ).observable
         )
     }

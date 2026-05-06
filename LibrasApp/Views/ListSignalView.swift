@@ -11,7 +11,7 @@ import SwiftUI
 import Nuvem
 
 struct ListSignalView: View {
-    var categoryView: String
+    var categoryHome: String
     @State var signs: [Sign.Observable] = []
     @State var favorites: [Sign.Observable] = []
     @State var isFavorite: Bool = true
@@ -25,19 +25,20 @@ struct ListSignalView: View {
                    VStack{
                        ForEach(signs){ sign in
                            let category = sign.category
-                           if(categoryView == category){
+
+                           if(categoryHome == category && sign.approved == "true"){
                                VStack {
                                    NavigationLink(destination: SignalView(sign: sign)) {
                                        SignalButton(sign: sign)
                                    }
-                                   .padding(.top, 15)
+                                   .padding(.top, 8)
                                    Spacer()
                                }
                            }
                        }
                    }
                    
-                   .navigationTitle(Text(categoryView))
+                   .navigationTitle(Text(categoryHome))
                    .toolbar{
                        ToolbarItem(placement: .navigationBarTrailing) {
                            Button("Add", systemImage: "plus") {
@@ -62,12 +63,15 @@ struct ListSignalView: View {
                    }
                }
             }
-           .background(Color.blueBackground)
+           .background(Image("background")
+               .resizable()
+               .frame(width: 400, height: 1000)
+           )
         }
     }
 }
 
 #Preview {
-    @Previewable @State var categoryView = "Metodologia"
-    ListSignalView(categoryView: categoryView)
+    @Previewable @State var categoryHome = "Ferramentas"
+    ListSignalView(categoryHome: categoryHome)
 }

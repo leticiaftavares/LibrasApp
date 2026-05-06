@@ -48,20 +48,32 @@ struct PhotoPickerDemo: View {
     @State private var pickerItem: PhotosPickerItem?
     @State private var movieUrl: URL?
     
+    var handleVideoData: (Data?) -> Void
+    
     var body: some View {
         VStack {
             PhotosPicker(selection: $pickerItem, matching: .videos, photoLibrary: .shared()) {
-                Text("Select a Video!")
+                if movieUrl == nil {
+                    Text("Selecione um Vídeo")
+                        .foregroundStyle(Color.white)
+                        .padding()
+                        .background(RoundedRectangle(cornerRadius: 16).fill(.blue))
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+            }
+            
+            if let url =  movieUrl {
+                Text("Enviado com Sucesso!")
                     .foregroundStyle(Color.white)
                     .padding()
                     .background(RoundedRectangle(cornerRadius: 16).fill(.blue))
                     .frame(maxWidth: .infinity, alignment: .center)
-            }
-            
-            if let url =  movieUrl {
-                VideoPlayer(player: AVPlayer(url: url))
-                    .padding(.bottom, 16)
-                    .background(Color.black)
+//                VideoPlayer(player: AVPlayer(url: url))
+//                    .cornerRadius(10)
+//                    .padding()
+//                    .background(Color.clear)
+//                    .frame(width: 80, height: 100, alignment: .center)
+
             }
             
         }
@@ -69,6 +81,8 @@ struct PhotoPickerDemo: View {
             Task {
                 if let loaded = try? await pickerItem?.loadTransferable(type: TransferableVideo.self) {
                     movieUrl = loaded.url
+                    await convert_to_data()
+                    print("video baixado")
                 } else {
                     print("Failed to load image")
                 }
@@ -82,9 +96,23 @@ struct PhotoPickerDemo: View {
             }
         }
     }
+    
+    func convert_to_data()  async {
+        if movieUrl != nil {
+            do{
+                let (data, _) = try! await URLSession.shared.data(from: movieUrl!)
+                handleVideoData(data)
+            } catch{
+                print(error)
+            }
+        }
+
+    }
 
 }
 
 #Preview {
-    PhotoPickerDemo()
+    PhotoPickerDemo() { data in
+        print("Achou a imagem!")
+    }
 }

@@ -15,7 +15,7 @@ struct NewSignalView: View {
     var body: some View {
         NavigationStack {
             FormView(isPresented: $isPresented)
-                .navigationTitle(Text("New Signal"))
+                .navigationTitle(Text("Novo Sinal"))
                 .toolbar{
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("Dismiss", systemImage: "xmark"){

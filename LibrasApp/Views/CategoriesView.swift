@@ -17,24 +17,24 @@ struct CategoriesView: View {
         NavigationStack{
             VStack {
                 
-                Grid(horizontalSpacing: 10, verticalSpacing: 20) {
+                Grid(horizontalSpacing: 15, verticalSpacing: 15) {
                     GridRow {
 
-                        NavigationLink( destination: ListSignalView(categoryView: categories[0]), label: {
-                            CategoryButton(category: categories[0], image: "symbolCBL")
+                        NavigationLink( destination: ListSignalView(categoryHome: categories[0]), label: {
+                            CategoryButton(category: categories[0], image: "symbolCBL", numSign: "19 Sinais")
                         })
-                        NavigationLink( destination: ListSignalView(categoryView: categories[1]), label: {
-                            CategoryButton(category: categories[1], image: "symbolSettings")
+                        NavigationLink( destination: ListSignalView(categoryHome: categories[1]), label: {
+                            CategoryButton(category: categories[1], image: "symbolSettings", numSign: "6 Sinais")
                         })
                         
                     }
                     
                     GridRow {
-                        NavigationLink( destination: ListSignalView(categoryView: categories[2]), label: {
-                            CategoryButton(category: categories[2], image: "symbolCode")
+                        NavigationLink( destination: ListSignalView(categoryHome: categories[2]), label: {
+                            CategoryButton(category: categories[2], image: "symbolCode", numSign: "3 Sinais")
                         })
-                        NavigationLink( destination: ListSignalView(categoryView: categories[3]), label: {
-                            CategoryButton(category: categories[3], image: "symbolBusniess")
+                        NavigationLink( destination: ListSignalView(categoryHome: categories[3]), label: {
+                            CategoryButton(category: categories[3], image: "symbolBusniess", numSign: "2 Sinais")
                         })
                         
                     }
@@ -46,8 +46,10 @@ struct CategoriesView: View {
                     .navigationTitle(Text("Categorias"))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .background(Color.blueBackground)
-            
+            .background(Image("background")
+                .resizable()
+                .frame(width: 400, height: 1000)
+            )
         }
     }
 
@@ -55,5 +57,4 @@ struct CategoriesView: View {
 
 #Preview {
     CategoriesView()
-        .modelContainer(for: Palavra.self, inMemory: true)
 }

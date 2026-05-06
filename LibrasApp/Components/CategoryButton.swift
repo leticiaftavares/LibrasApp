@@ -10,6 +10,7 @@ import SwiftUI
 struct CategoryButton: View {
     var category: String
     var image: String
+    var numSign: String
     var body: some View {
 
             VStack(alignment: .leading){
@@ -21,14 +22,14 @@ struct CategoryButton: View {
                         .padding(.horizontal,5)
                 }
                 
-                Text("Sinais")
+                Text(numSign)
                     .font(Font.system(size: 16))
                 Text(category)
                     .font(Font.system(size: 20).bold())
             }
             .foregroundStyle(Color(.bluetitles))
             .contentShape(Rectangle())
-            .frame(width: 155, height: .infinity, alignment: .leading)
+            .frame(width: 145, height: .infinity, alignment: .leading)
                 .padding()
                 .background(Color(.white))
                 .cornerRadius(16)
@@ -40,6 +41,7 @@ struct CategoryButton: View {
 #Preview {
     @Previewable @State var category: String = "Sinais"
     @Previewable @State var image: String = "Image"
+    @Previewable @State var numSign: String = "2 Sinais"
 
-    CategoryButton(category: category, image: image)
+    CategoryButton(category: category, image: image, numSign: numSign)
 }

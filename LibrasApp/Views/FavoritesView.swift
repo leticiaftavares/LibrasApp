@@ -12,17 +12,26 @@ import SwiftUI
 import Nuvem
 
 struct FavoritesView: View {
+    
+    @AppStorage("favorites") var favorites = FavoriteSigns()
+    
     @State var signs: [Sign.Observable] = []
+    
+    var favoriteSigns: [Sign.Observable] {
+        signs.filter { sign in
+            favorites.contains(sign.id)
+        }
+    }
     
     var body: some View {
         NavigationStack{
             ScrollView(.vertical) {
                 VStack{
-                    ForEach(signs){ sign in
+                    ForEach(favoriteSigns){ sign in
                         VStack {
                             
                             NavigationLink(destination: SignalView(sign: sign)) {
-                                FavoriteButton(sign: sign)
+                                SignalButton(sign: sign)
                             }
                             .padding(.top, 15)
                             Spacer()
@@ -44,7 +53,10 @@ struct FavoritesView: View {
                     
                 }
             }
-            .background(Color.blueBackground)
+            .background(Image("background")
+                .resizable()
+                .frame(width: 400, height: 1000)
+            )
         }
     }
 }

@@ -21,18 +21,19 @@ struct MeaningButton: View {
                 Spacer()
                 ExpandedButton(isExpanded: $isExpanded)
             }
-            .frame(maxWidth: 330, alignment: .init(horizontal: .leading, vertical: .top))
+            .frame(maxWidth: 360, alignment: .init(horizontal: .leading, vertical: .top))
             if isExpanded {
                 Text(sign.meaning)
                 .font(Font.system(size: 18))
                 .foregroundStyle(Color(.bluetitles))
-                .frame(maxWidth: 300, alignment: .init(horizontal: .leading, vertical: .top))
+                .frame(maxWidth: 360, alignment: .init(horizontal: .leading, vertical: .top))
                 .padding()
                 .background(Color(.white))
                 .cornerRadius(16)
             }
+            
         }
-        .frame(maxWidth: 330, alignment: .init(horizontal: .leading, vertical: .top))
+        .frame(maxWidth: 360, alignment: .init(horizontal: .leading, vertical: .top))
     }
 }
 
@@ -46,7 +47,9 @@ struct MeaningButton_Preview: View {
                 handSettings: [UIImage()],
                 meaning: "meaning",
                 tag: ["tag"],
-                fullName: "fullName"
+                fullName: "fullName",
+                approved:  "true",
+                isFavorite: false
             ).observable
         )
     }

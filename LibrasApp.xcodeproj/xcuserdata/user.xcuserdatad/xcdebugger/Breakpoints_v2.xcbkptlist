@@ -18,36 +18,102 @@
             endingLineNumber = "26"
             landmarkName = "body"
             landmarkType = "24">
-            <Locations>
-               <Location
-                  uuid = "A1CC1B24-70BA-4E2A-AB54-23106CF5523B - 3200390cde8b044f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; &lt;&lt;opaque return type of static SwiftUI.TabContentBuilder.buildBlock&lt;&#x3c4;_0_0, &#x3c4;_0_1, &#x3c4;_0_2, &#x3c4;_0_3 where &#x3c4;_0_0 == &#x3c4;_1_0.TabValue, &#x3c4;_1_0: SwiftUI.TabContent, &#x3c4;_1_1: SwiftUI.TabContent, &#x3c4;_1_2: SwiftUI.TabContent, &#x3c4;_1_3: SwiftUI.TabContent, &#x3c4;_1_0.TabValue == &#x3c4;_1_1.TabValue, &#x3c4;_1_1.TabValue == &#x3c4;_1_2.TabValue, &#x3c4;_1_2.TabValue == &#x3c4;_1_3.TabValue&gt;(&#x3c4;_1_0, &#x3c4;_1_1, &#x3c4;_1_2, &#x3c4;_1_3) -&gt; some&gt;&gt;.0 in LibrasApp.TabView_.body.getter : some"
-                  moduleName = "LibrasApp.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/user/Documents/LibrasApp/LibrasApp/Views/TabView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "26"
-                  endingLineNumber = "26">
-               </Location>
-               <Location
-                  uuid = "A1CC1B24-70BA-4E2A-AB54-23106CF5523B - fdc38e80130a4516"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 () -&gt; LibrasApp.SearchView in closure #1 () -&gt; &lt;&lt;opaque return type of static SwiftUI.TabContentBuilder.buildBlock&lt;&#x3c4;_0_0, &#x3c4;_0_1, &#x3c4;_0_2, &#x3c4;_0_3 where &#x3c4;_0_0 == &#x3c4;_1_0.TabValue, &#x3c4;_1_0: SwiftUI.TabContent, &#x3c4;_1_1: SwiftUI.TabContent, &#x3c4;_1_2: SwiftUI.TabContent, &#x3c4;_1_3: SwiftUI.TabContent, &#x3c4;_1_0.TabValue == &#x3c4;_1_1.TabValue, &#x3c4;_1_1.TabValue == &#x3c4;_1_2.TabValue, &#x3c4;_1_2.TabValue == &#x3c4;_1_3.TabValue&gt;(&#x3c4;_1_0, &#x3c4;_1_1, &#x3c4;_1_2, &#x3c4;_1_3) -&gt; some&gt;&gt;.0 in LibrasApp.TabView_.body.getter : some"
-                  moduleName = "LibrasApp.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/user/Documents/LibrasApp/LibrasApp/Views/TabView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "27"
-                  endingLineNumber = "27">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F0D17433-A880-40B9-B861-D4B0C850D12F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LibrasApp/Data/Sign.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CFD47F31-C753-41B4-9BA9-9573A3AC838B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LibrasApp/Data/Sign.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "convertToSignCodable()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6405B5E6-3A5D-4551-B456-B5A7A2093845"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LibrasApp/Data/Sign.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "624D719C-4A0E-4C6E-92B8-71E417EA5187"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LibrasApp/Data/Sign.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "convertToSignCodable()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DD31757E-8E58-4A4C-8095-043659E244B3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LibrasApp/Data/Sign.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "convertToSignCodable()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7067543F-EE0E-4823-BDDA-34C6D78D018D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LibrasApp/Data/Sign.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "convertToSign(decodedSigns:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

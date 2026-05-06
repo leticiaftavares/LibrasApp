@@ -1,0 +1,38 @@
+{
+  "fill" : {
+    "solid" : "display-p3:0.96783,0.93532,0.60420,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "glass" : false,
+          "hidden" : false,
+          "image-name" : "oianim2.png",
+          "name" : "oianim2",
+          "position" : {
+            "scale" : 1.82,
+            "translation-in-points" : [
+              -28.09375,
+              155.4765625
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

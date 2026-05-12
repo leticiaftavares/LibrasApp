@@ -26,7 +26,6 @@ struct FormView: View {
     
     let categories = ["Metodologia", "Ferramenta", "Código", "Negócio"]
     let tags = ["Linguagem", "Framework", "Desenvolvimento", "Conteúdo", "Planejamneto", "Documentação", "Pessoas"]
-  
     
     var body: some View {
         

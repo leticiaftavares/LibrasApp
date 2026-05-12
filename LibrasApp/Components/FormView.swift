@@ -22,7 +22,7 @@ struct FormView: View {
     
     @State var selectedCategory = ""
     
-    @State var selectionMulti: Set<String> = [""]
+    @State var selectionMulti: Set<String> = []
     
     let categories = ["Metodologia", "Ferramenta", "Código", "Negócio"]
     let tags = ["Linguagem", "Framework", "Desenvolvimento", "Conteúdo", "Planejamneto", "Documentação", "Pessoas"]
@@ -68,22 +68,28 @@ struct FormView: View {
                     }
 
                 }
-                Section("Tags *"){
-                    
+                Section("Tags *") {
                     LazyVGrid(columns: Array(repeating: GridItem(), count: 2)) {
-                        Group(selection: $selectionMulti) {
-                            ForEach(tags, id: \.self) { tag in
+                        ForEach(tags, id: \.self) { tag in
+                            Button {
+                               
+                                if selectionMulti.contains(tag) {
+                                    selectionMulti.remove(tag)
+                                } else {
+                                    selectionMulti.insert(tag)
+                                }
+                            } label: {
                                 Text(tag)
-                                    .font(Font.system(size: 20))
+                                    .font(.system(size: 20))
                                     .padding(10)
-                                    .frame(width: 170,height: 40)
-                                    .background(selectionMulti.contains(tag) ? .blue : .white)
+                                    .frame(width: 170, height: 40)
+                                    .background(selectionMulti.contains(tag) ? .blue : Color(.systemGray6))
                                     .cornerRadius(20)
                                     .foregroundStyle(selectionMulti.contains(tag) ? .white : .blue)
                             }
+                            .buttonStyle(.borderless)
                         }
                     }
-                    .buttonStyle(.borderless)
                 }
                     }
             .toolbar{
@@ -94,13 +100,15 @@ struct FormView: View {
                             isPresented = false
                         }
                     }
-                    .disabled(signName.isEmpty || signMeaning.isEmpty || selectedCategory == "" || selectionMulti == [""] || fullName.isEmpty || videoData == nil)
-                }
+                    .disabled(signName.isEmpty || signMeaning.isEmpty || selectedCategory == "" || selectionMulti.isEmpty || fullName.isEmpty || videoData == nil)                }
             }
         }
     }
     
     func save() async {
+        
+        let tagsSelecionadas = tags.filter { selectionMulti.contains($0) }
+        
         do {
             var sign = Sign(
                 name: signName,
@@ -108,7 +116,7 @@ struct FormView: View {
                 category: selectedCategory,
                 handSettings: [UIImage()],
                 meaning: signMeaning,
-                tag: tags,
+                tag: tagsSelecionadas,
                 fullName: fullName,
                 approved:  "false",
                 isFavorite: false

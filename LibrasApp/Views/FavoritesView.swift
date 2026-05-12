@@ -56,6 +56,7 @@ struct FavoritesView: View {
             .background(Image("background")
                 .resizable()
                 .ignoresSafeArea()
+                        
             )
         }
     }

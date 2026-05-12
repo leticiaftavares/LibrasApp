@@ -47,7 +47,7 @@ struct CategoriesView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .background(Image("background")
-                .resizable()
+                .resizable()                        
                 .ignoresSafeArea()
             )
         }

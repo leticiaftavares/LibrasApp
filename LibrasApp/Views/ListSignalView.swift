@@ -64,7 +64,7 @@ struct ListSignalView: View {
                }
             }
            .background(Image("background")
-               .resizable()
+               .resizable()                       
                .ignoresSafeArea()
            )
         }

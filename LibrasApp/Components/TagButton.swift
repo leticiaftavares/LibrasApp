@@ -14,7 +14,7 @@ struct TagButton: View {
         ForEach(sign.tag, id: \.self){ singletag in
             Label(singletag, systemImage: "tag.fill")
                 .padding()
-                .frame(height: 32)
+//                .frame(height: 32)
     //            .frame(maxWidth: 160)
                 .background(Color(.bluetag))
                 .cornerRadius(30)

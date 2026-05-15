@@ -25,7 +25,8 @@ struct SignalButton: View {
         HStack{
             VStack {
                 Text(sign.name)
-                    .font(Font.system(size: 22).bold())
+//                    .font(Font.system(size: 22).bold())
+                    .bold()
                     .foregroundStyle(Color(.bluetitles))
                     .frame(maxWidth: .infinity, alignment: .init(horizontal: .leading, vertical: .top))
                 HStack {

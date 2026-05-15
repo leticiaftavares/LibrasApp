@@ -56,7 +56,7 @@ struct FormView: View {
                                 selectedCategory = category
                             } label: {
                                 Text(category)
-                                    .font(Font.system(size: 20))
+//                                    .font(Font.system(size: 20))
                                     .padding(10)
                                     .frame(width: 140,height: 40)
                                     .background(selectedCategory == category ? .blue : .white)
@@ -80,7 +80,7 @@ struct FormView: View {
                                 }
                             } label: {
                                 Text(tag)
-                                    .font(.system(size: 20))
+//                                    .font(.system(size: 20))
                                     .padding(10)
                                     .frame(width: 170, height: 40)
                                     .background(selectionMulti.contains(tag) ? .blue : Color(.systemGray6))

@@ -15,7 +15,8 @@ struct MeaningButton: View {
         VStack {
             HStack{
                 Text("Significado")
-                    .font(Font.system(size: 22).bold())
+//                    .font(Font.system(size: 22).bold())
+                    .bold()
                     .foregroundStyle(Color(.bluetitles))
                     .frame(maxWidth: 330, alignment: .init(horizontal: .leading, vertical: .top))
                 Spacer()

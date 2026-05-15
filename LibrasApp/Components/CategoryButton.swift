@@ -25,7 +25,7 @@ struct CategoryButton: View {
                 Text(numSign)
                     .font(Font.system(size: 16))
                 Text(category)
-                    .font(Font.system(size: 20).bold())
+                   .bold()
             }
             .foregroundStyle(Color(.bluetitles))
             .contentShape(Rectangle())

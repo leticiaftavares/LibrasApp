@@ -8,24 +8,21 @@
 import Foundation
 import SwiftData
 import SwiftUI
+import SwiftUIExtras
 
 struct NewSignalView: View {
     @Binding var isPresented: Bool
     var body: some View {
         NavigationStack {
-            Text("New Signal View")
-                .navigationTitle(Text("New Signal"))
+            FormView(isPresented: $isPresented)
+                .navigationTitle(Text("Novo Sinal"))
                 .toolbar{
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("Dismiss", systemImage: "xmark"){
                             isPresented = false
                         }
                     }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Send", systemImage: "checkmark"){
 
-                        }
-                    }
                 }
         }
     }

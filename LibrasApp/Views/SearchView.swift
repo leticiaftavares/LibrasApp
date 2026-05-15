@@ -13,13 +13,25 @@ struct SearchView: View {
     @State private var searchText = ""
     var body: some View {
         NavigationStack {
-            Text("pesquisando \(searchText)")
-            .navigationTitle(Text("Pesquisa"))
-            .searchable(text: $searchText)
-
-        }
+//            VStack {
+//                NavigationLink(destination: {
+////                    SignalView()
+//                }, label: {
+////                    SearchButton()
+//                })
+//                .padding(.top,15)
+//                Spacer()
+            SearchButton()
+                .navigationTitle(Text("Pesquisa"))
+                .padding(.top, 10)
+                .background(Color(.blueBackground))
+            }
+        .searchable(text: $searchText)
     }
+
 }
+
+
 
 #Preview {
     SearchView()

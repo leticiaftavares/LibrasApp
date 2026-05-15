@@ -8,13 +8,111 @@
 import Foundation
 import SwiftData
 import SwiftUI
+import Nuvem
+import AVKit
+import CloudKit
 
 struct SignalView: View {
+    
+    @AppStorage("favorites") var favorites = FavoriteSigns()
+    @Bindable var sign: Sign.Observable
+    
+    var isFavorite: Bool {
+        favorites.contains(sign.id)
+    }
+    
+    @State var player: AVPlayer?
+    
     var body: some View {
-        Text("sinais")
+        
+        NavigationStack {
+            ScrollView {
+                VStack {
+                    Text(sign.fullName ?? "fullname")
+                        .font(Font.system(size: 18))
+                        .frame(maxWidth: .infinity, alignment: .init(horizontal: .leading, vertical: .top))
+                        .padding(.horizontal, 18)
+                    VStack {
+                        VideoPlayer(player: player)
+                            .frame(width: 200, height: 240, alignment: .center)
+                            .cornerRadius(10)
+                            .padding()
+                            .background(Color.clear)
+                        MeaningButton(sign: sign)
+                            .padding(20)
+                        HandSettingsButton(sign: sign)
+                    }
+                    .padding(.horizontal)
+                    .navigationTitle(Text(sign.name))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.blueBackground)
+            .toolbar{
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Favoritar", systemImage: isFavorite == true ? "heart.fill" :"heart") {
+                        favorite()
+                    }
+                }
+            }
+        }
+        .task {
+            
+            let cacheURL = URL.cachesDirectory.appendingPathComponent("\(sign.name.lowercased()).mov")
+            
+            if FileManager.default.fileExists(atPath: cacheURL.path(percentEncoded: false)) {
+                print("loading from cache...")
+                player = AVPlayer(url: cacheURL)
+                return
+            }
+            
+            do {
+                print("loading from cloud...")
+                try await $sign.$video.load(on: .default)
+                guard let assetURL = sign.$video.asset?.fileURL else {
+                    return
+                }
+                do {
+                    try FileManager.default.copyItem(at: assetURL, to: cacheURL)
+                    player = AVPlayer(url: cacheURL)
+                } catch {
+                    print(error)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func favorite() {
+        if favorites.contains(sign.id) {
+            favorites.remove(sign.id)
+        } else {
+            favorites.insert(sign.id)
+        }
+        
     }
 }
 
+struct SignalView_Preview: View {
+    var body: some View {
+        SignalView(
+            sign: Sign(
+                name: "Sinal",
+                video: nil,
+                category: "category",
+                handSettings:[UIImage()],
+                meaning: "meaning",
+                tag: ["tag"],
+                fullName: "FullName",
+                approved:  "true",
+                isFavorite: false
+            ).observable
+        )
+    }
+}
 #Preview {
-    SignalView()
+    SignalView_Preview()
 }
